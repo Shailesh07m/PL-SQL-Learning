@@ -1,0 +1,12 @@
+DECLARE
+    a number;
+    b number;
+    c number;
+   BEGIN
+    a:=5;
+    b:=6;
+    c:=a+b;
+    dbms_output.put_line('add');
+	dbms_output.put_line(c);
+   END;
+ /
