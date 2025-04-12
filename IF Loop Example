@@ -1,0 +1,15 @@
+DECLARE
+  i NUMBER := 1;
+  n NUMBER := &n;
+  a NUMBER;
+BEGIN
+  LOOP
+    a := n * i;
+    dbms_output.put_line(n || '*' || i || '=' || a);
+    IF i = 10 THEN
+      EXIT;
+    END IF;
+    i := i + 1;
+  END LOOP;
+END;
+/
