@@ -1,0 +1,14 @@
+DECLARE 
+	 i number :=1;
+ 	 j number:=1;
+	n number:=&n;
+BEGIN
+FOR i IN 1..n LOOP
+FOR j IN 1..i LOOP
+dbms_output.put('*');
+
+End LOOP;
+dbms_output.put_line('');
+END loop;
+END;
+/
