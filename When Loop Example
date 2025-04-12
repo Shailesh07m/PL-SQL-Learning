@@ -1,0 +1,12 @@
+DECLARE
+
+	i number:=1;
+BEGIN 
+
+LOOP 
+	DBMS_OUTPUT.PUT_LINE('* * * *');
+ i:=i+1;
+Exit WHEN i=5;
+End LOOP;
+End;
+/
