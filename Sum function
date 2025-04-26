@@ -1,0 +1,17 @@
+CREATE OR REPLACE FUNCTION sum_return
+RETURN NUMBER
+AS
+    a NUMBER := 3;
+    b NUMBER := 5;
+    c NUMBER;
+BEGIN
+    c := a + b;
+    RETURN c;
+END sum_return;
+/
+
+DECLARE 
+begin 
+dbms_output.put_line(sum_return);
+end;
+/
