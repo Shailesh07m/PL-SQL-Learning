@@ -1,0 +1,33 @@
+Declare
+
+
+
+em empl%ROWTYPE;
+
+BEGIN
+
+
+
+select *into em from empl;
+
+
+
+dbms_output.put_line('Employee id='||em.e_id);
+
+
+
+dbms_output.put_line('Employee Name="||em.e_name);
+
+
+
+dbms_output.put_line('Employee City = '||em.e_city);
+
+
+
+dbms_output.put_line('Employee Salary ='||em.sal);
+
+End;
+/
+
+
+ENd;
