@@ -1,0 +1,12 @@
+DECLARE 
+i number:=1;
+f number:=1;
+n number:=5;
+Begin 
+For i in 1..n Loop
+
+f:=f*i;
+Dbms_output.put_line('Factorial of n number is '||f);
+End loop;
+End;
+/
