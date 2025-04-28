@@ -1,0 +1,20 @@
+CREATE OR REPLACE FUNCTION S1 (n IN NUMBER)
+RETURN NUMBER
+AS
+m NUMBER:= n;
+t_sum NUMBER:= 0;
+BEGIN
+FOR i IN 1..m LOOP
+t_sum:= t_sum+i;
+END LOOP;
+RETURN t_sum;
+END S1;
+/
+
+
+
+DECLARE
+    BEGIN
+    DBMS_OUTPUT.put_LIne('THE SUM OF N NUMBERS = '||s1(10));
+   END;
+   /
