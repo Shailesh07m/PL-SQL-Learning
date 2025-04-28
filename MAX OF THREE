@@ -1,0 +1,16 @@
+CREATE OR REPLACE FUNCTION M3
+        RETURN VARCHAR2
+    AS
+        a NUMBER := &a;
+        b NUMBER := &b;
+        c NUMBER := &c;
+    BEGIN
+        IF (a > b) AND (a > c) THEN
+            RETURN 'A is Maximum';
+       ELSIF (b > a) AND (b > c) THEN
+           RETURN 'B is Maximum';
+       ELSE
+           RETURN 'C is Maximum';
+       END IF;
+   END M3;
+   /
