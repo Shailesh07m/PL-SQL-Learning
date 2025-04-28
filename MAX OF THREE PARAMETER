@@ -1,0 +1,26 @@
+CREATE OR REPLACE FUNCTION M4 ( X IN NUMBER , Y IN NUMBER , Z IN NUMBER)
+    RETURN VARCHAR2
+    AS
+    a NUMBER:= X ;
+    b NUMBER:= Y ;
+  c NUMBER:=Z;
+   BEGIN
+   IF (a > b) and (a > c) THEN
+   return 'A is MAximum';
+  ELSIF ( b > a) and (b > c) THEN
+  return ' B is MAximum';
+  else
+   return ' C is Maximum';
+  end if;
+ 
+   end M4;
+  /
+
+
+DECLARE
+   TOTAL VARCHAR2 (100);
+    BEGIN
+   TOTAL:= M4(50,20,40);
+    DBMS_OUTPUT.PUT_LINE(TOTAL);
+  END;
+   /
