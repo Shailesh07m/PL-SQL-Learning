@@ -1,0 +1,28 @@
+CREATE OR REPLACE FUNCTION P2(n in number)
+RETURN VARCHAR2
+AS
+m number:= n;
+BEGIN
+FOR i IN 1..m LOOP
+FOR j IN 1..i LOOP
+DBMS_OUTPUT.PUT('* ');
+END LOOP;
+DBMS_OUTPUt.PUT_LINE(' ');
+END LOOP;
+RETURN 'DONE';
+END P2;
+/
+
+
+DECLARE 
+result varchar2(200);
+BEGIN
+result:=P2(15);
+DBMS_OUTPUT.PUT_LINE(result);
+END;
+/ 
+
+
+
+
+
