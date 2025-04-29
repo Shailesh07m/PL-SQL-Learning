@@ -1,0 +1,39 @@
+DECLARE
+    n        NUMBER := 8;  -- Replace with your desired input
+    g_size   NUMBER;       -- Size of the grid
+    i        NUMBER;       -- Loop variable for rows
+    j        NUMBER;       -- Loop variable for columns
+    a        NUMBER;       -- Temporary variable to calculate distance from edges
+    b        NUMBER;       -- Temporary variable to calculate distance from edges
+    min_val  NUMBER;       -- Minimum value between 'a' and 'b'
+BEGIN
+    g_size := 2 * n - 1;   -- Calculate the grid size based on 'n'
+
+    FOR i IN 1 .. g_size LOOP  -- Loop through rows
+        FOR j IN 1 .. g_size LOOP  -- Loop through columns
+            a := i;  -- Start with the row index
+            IF i > n THEN
+                a := 2 * n - i;  -- Adjust for rows beyond the middle
+            END IF;
+
+            b := j;  -- Start with the column index
+            IF j > n THEN
+                b := 2 * n - j;  -- Adjust for columns beyond the middle
+            END IF;
+
+            -- Determine the minimum value between 'a' and 'b'
+            IF a < b THEN
+                min_val := a;
+            ELSE
+                min_val := b;
+            END IF;
+
+            -- Print the value for the current cell
+            DBMS_OUTPUT.PUT(n + 1 - min_val || ' ');
+        END LOOP;
+
+        -- Move to the next line after each row
+        DBMS_OUTPUT.PUT_LINE('');
+    END LOOP;
+END;
+/
