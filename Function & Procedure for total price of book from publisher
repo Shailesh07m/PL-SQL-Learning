@@ -1,0 +1,82 @@
+create table library(
+lno int primary key,
+lname varchar2(30),
+librarian varchar2(30),
+n_of_books int 
+);
+
+
+create table book(
+bid int primary key,
+bname varchar2(50),
+a_name varchar2(50) ,
+price int not null,
+publication varchar(30),
+lno int references library(lno)
+);
+
+insert into library values(1,'College Library','Gauri jadhav',100);
+insert into library values(2,'City Libraray','Alok Pandey',1000);
+
+alter table library
+add loc varchar2(30);
+update library
+set loc='Pune'
+where lno=2;
+insert into book values(1,'R.D.B.M.S','Dr.Ms. Manisha And Abhijeet',290,'Nirali',1);
+insert into book values(2,'Web Technology','Dr.Aniket Nagane ',288,'Nirali',1);
+insert into book values(3,'Business Communication','Dr.Bhavani Shankar',310,'Vission',1);
+insert into book values(4,'Financial Accounting','Dr.Mahesh Kulkarni',250,'Sucess',1);
+insert into book values(5,'Business Mathematics','Dr.P.G.Dixit',190,'Vission',1);
+insert into book values(6,'Business Statictics','Dr.Bhupesh tyagi',260,'Sucess',1);
+insert into book values(7,'C Programing','Dr.Vishal tyagi',300,'Nirali',1);
+
+
+CREATE OR REPLACE FUNCTION F12 (PN IN VARCHAR2)
+RETURN NUMBER
+AS 
+T_PRICE NUMBER;
+P_NAME VARCHAR2(30):=PN;
+BEGIN
+SELECT SUM(BOOK.PRICE) INTO T_PRICE FROM LIBRARY , BOOK WHERE LIBRARY.LNO=BOOK.LNO AND 
+PUBLICATION=P_NAME ;
+IF SQL%FOUND THEN
+RETURN T_PRICE;
+ELSE 
+RETURN NULL;
+END IF;
+END F12;
+/
+
+set serveroutput on;
+
+DECLARE
+    BEGIN
+    DBMS_OUTPUT.PUT_LINE('TOTAL PRICE = '||F12('Sucess'));
+   end;
+   /
+
+
+CREATE OR REPLACE PROCEDURE F13 (PN IN VARCHAR) 
+AS
+T_PRICE NUMBER;
+P_NAME VARCHAR(50):=PN;
+RESULT VARCHAR2(50);
+BEGIN 
+SELECT SUM(BOOK.PRICE) INTO T_PRICE FROM LIBRARY, BOOK WHERE LIBRARY.LNO=BOOK.LNO
+AND PUBLICATION=P_NAME;
+RESULT:= ' TOTAL SUM IS EQUAL TO '|| T_PRICE;
+DBMS_OUTPUT.PUT_LINE(RESULT);
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+DBMS_OUTPUT.PUT_LINE('RECORD NOT FOUND . PLEASE CHECK PASSED PARAMETER');
+END;
+
+/
+
+DECLARE
+  2  BEGIN
+  3  F13('Nirali');
+  4  end;
+  5  /
+TOTAL SUM IS EQUAL TO 878
